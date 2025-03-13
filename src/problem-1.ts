@@ -1,6 +1,3 @@
-// Design a **Library Management System** where books can be borrowed and returned. Create a `Book` class with properties such as `title`, `author`, `isbn`, and `available` (defaulting to `true`). Implement methods to borrow (`borrowBook()`) and return (`returnBook()`) books. Next, create a `Library` class that maintains a collection of books. Implement methods to add books (`addBook(book: Book)`) and search for a book by its `isbn` (`findBook(isbn: number)`). Ensure that a book cannot be borrowed if it is already checked out.  
-
-
 class Book {
 
     public title: string;
