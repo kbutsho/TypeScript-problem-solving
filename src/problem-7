@@ -1,0 +1,47 @@
+interface Employee {
+  id: number;
+  name: string;
+  baseSalary: number;
+  calculateSalary(): number;
+}
+
+class FullTimeEmployee implements Employee {
+  constructor(
+    public id: number,
+    public name: string,
+    public baseSalary: number,
+    private bonusPercentage: number
+  ) {}
+
+  calculateSalary(): number {
+    return this.baseSalary + (this.baseSalary * this.bonusPercentage) / 100;
+  }
+}
+
+class PartTimeEmployee implements Employee {
+  constructor(
+    public id: number,
+    public name: string,
+    public baseSalary: number,
+    private hourlyRate: number,
+    private hoursWorked: number
+  ) {}
+
+  calculateSalary(): number {
+    return this.hourlyRate * this.hoursWorked;
+  }
+}
+
+class Payroll {
+  calculateSalary(employee: Employee): number {
+    return employee.calculateSalary();
+  }
+}
+
+const payroll = new Payroll();
+
+const fullTimeEmp = new FullTimeEmployee(1, "Alice", 5000, 10);
+const partTimeEmp = new PartTimeEmployee(2, "Bob", 0, 20, 80);
+
+console.log(`${fullTimeEmp.name}'s Salary: $${payroll.calculateSalary(fullTimeEmp)}`);
+console.log(`${partTimeEmp.name}'s Salary: $${payroll.calculateSalary(partTimeEmp)}`);
